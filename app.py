@@ -25,7 +25,7 @@ descriptions = {
     'This Is Not Happening': 'While injured, great skill check success zones are increased by 50%.',
     'Leader': 'When you are working on a generator with others, you all get a bonus to repair speed.',
     'Spine Chill': 'Get notified when the killer is looking directly in your direction and standing within 36 meters.',
-    'Alert': 'See the killers aura for 3 seconds when they break a pallet or generator within 36 meters.',
+    'Alert': 'See the killer\'s aura for 3 seconds when they break a pallet or generator within 36 meters.',
     "We'll Make It": 'Receive an additional speed bonus when healing survivors and grants them the speed bonus as well.',
     'Borrowed Time': 'Unhooking survivors will trigger the Endurance status effect for 15 seconds.',
     'Kindred': 'See the auras of other survivors and the killer when you are hooked.',
@@ -33,3 +33,27 @@ descriptions = {
     'Iron Will': 'Grants the ability to reduce grunts from injuries by 50% while staying quiet.',
     'Premonition': 'The killer is alerted when looking in your direction within a range of 36 meters.',
 }
+
+def recomendar_build(estilo, num_pearks=4):
+    if estilo not in perks:
+        return 'Estilo não encontrado'
+    
+    if num_pearks <= 0 or num_pearks > 4:
+        return 'Número de perks inválido. Escolha entre 1 e 4 perks'
+    
+    build_recomendada = random.sample(perks[estilo], num_pearks)
+    print('Build recomendada para o estilo "{}" com {} perks:'.format(estilo, num_pearks))
+    
+    for perk in build_recomendada:
+        print('\n{}: \n{}'.format(perk, descriptions.get(perk, 'Descrição não disponível')))
+        
+        
+
+
+print('Bem-vindo ao DBD Build Generator!')
+print('Escolha um estilo de jogo: looper, selfcare, gerador ou helpful e a quantidade de pearks 1 a 4')
+
+gameplay = input('Estilo de jogo: ')
+num_pearks = int(input('Número de perks: '))
+
+recomendar_build(gameplay, num_pearks)
